@@ -13,7 +13,7 @@ public class Student {
 
     private String enrollmentId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "guide_id")
     private Guide guide;
 

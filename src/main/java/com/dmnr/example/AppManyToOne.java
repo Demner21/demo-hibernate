@@ -18,9 +18,12 @@ public class AppManyToOne {
         guide.setStaffId("Magic");
         guide.setSalary(21D);
         student.setGuide(guide);
-        session.save(student);
-        session.save(guide);
-        //session.persist(student); // no funciona
+        //session.save(student);
+        session.persist(student);
+        //session.persist(student); // no funciona debido a que no se ha configurado CASCADE
+        //para poder persistir solamente usando el metodo persist y pasar 1 solo objeto, se necesita
+        //configurar CASCADE  {TRANSITIVE PERSISTENCE} entre las clasess Student y Guide
+
         session.getTransaction().commit();
         session.close();
     }
