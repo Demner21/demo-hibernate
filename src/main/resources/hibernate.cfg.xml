@@ -13,13 +13,13 @@
         <property name="connection.password">PostgresqlEru</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
         
         <!-- Pretty print the SQL in the log file and console -->
         <property name="format_sql">false</property>
         
         <!-- Create/update tables automatically using mapping metadata -->
-        <property name="hbm2ddl.auto">drop</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <!-- mapping usando un archivo xml-->
         <!-- <mapping resource="com/dmnr/example/entity/Event.hbm.xml"/> -->
@@ -27,6 +27,8 @@
         <!-- mapping usando anotaciones-->
         <mapping class="com.dmnr.example.entity.Event"/>
         <mapping class="com.dmnr.example.entity.Person"/>
-        
+        <mapping class="com.dmnr.example.entity.Student"/>
+        <mapping class="com.dmnr.example.entity.Guide"/>
+
     </session-factory>
 </hibernate-configuration>
