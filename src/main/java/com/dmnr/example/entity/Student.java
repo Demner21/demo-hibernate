@@ -1,6 +1,7 @@
 package com.dmnr.example.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Student {
@@ -57,5 +58,27 @@ public class Student {
         this.name = name;
         this.enrollmentId = enrollmentId;
         this.guide = guide;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", enrollmentId='" + enrollmentId + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return getId().equals(student.getId()) && getName().equals(student.getName()) && getEnrollmentId().equals(student.getEnrollmentId()) && getGuide().equals(student.getGuide());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getEnrollmentId(), getGuide());
     }
 }
