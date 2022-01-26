@@ -3,8 +3,7 @@ package com.dmnr.example.entity.inheritance;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
