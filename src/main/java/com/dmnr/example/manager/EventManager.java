@@ -18,4 +18,8 @@ public class EventManager {
         session.close();
     }
 
+    public Event get(long id) {
+        session.beginTransaction();
+        return session.get(Event.class,id);
+    }
 }

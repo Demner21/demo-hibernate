@@ -27,8 +27,9 @@ public class App {
 
     // now lets pull events from the database and list them
 	var	session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-    var event1= session.get(Event.class, 1L)  ;
+    session.beginTransaction();
+
+    var event1= manager.get(1L);  ;
     // if (event1 ==null) {
     //   event1= new Event("creating event if doesnt exist before");
     //   event1.setId(1L);
@@ -46,35 +47,6 @@ public class App {
 		}
 		session.getTransaction().commit();
 		session.close();
-
-    log.info("CREANDO PERSON TABLE");
-
-    session=HibernateUtil.getSessionFactory().openSession();
-    session.beginTransaction();
-
-    Person persona = new Person();
-    persona.setName("Dmnr");
-    Address addres = new Address();
-    addres.setCity("NK");
-    addres.setNameAddress("New Zeland");
-    addres.setZipcode("2121");
-    persona.setAddres(addres);
-
-    session.persist(persona);
-
-    session.getTransaction().commit();
-    session.close();
-
-    log.info("CONSULTANDO PERSON TABLE");
-    session=HibernateUtil.getSessionFactory().openSession();
-    session.beginTransaction();
-    List<Person> listaPersona =session.createQuery("from Person").list();
-    for (Person personaItem : listaPersona) {
-      log.info("persona encontrada ---< {}", personaItem);
-    }
-    
-    session.getTransaction().commit();
-    session.close();
 
   }
 

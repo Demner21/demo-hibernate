@@ -27,4 +27,14 @@ class EventManagerTest {
         manager.save(new Event());
         Mockito.verify(session, Mockito.times(1)).save(Mockito.any(Event.class));
     }
+
+    @Test
+    void get() {
+        Mockito.when(session.beginTransaction()).thenReturn(transaction);
+
+        EventManager manager= new EventManager(session);
+        long id=1L;
+        manager.get(id);
+        Mockito.verify(session, Mockito.times(1)).get( Mockito.eq(Event.class),Mockito.anyLong());
+    }
 }
