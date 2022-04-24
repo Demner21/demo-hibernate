@@ -8,8 +8,12 @@ public class TestApp {
 
   @Test
   @DisplayName("junit is working")
-  public void isJunitWorking() {
+  void isJunitWorking() {
     Assertions.assertTrue(true);
   }
 
+  @Test
+  void should_save_student() {
+
+  }
 }

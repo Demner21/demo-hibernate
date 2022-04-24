@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import com.dmnr.example.entity.Address;
 import com.dmnr.example.entity.Event;
 import com.dmnr.example.entity.Person;
+import com.dmnr.example.manager.EventManager;
 import com.dmnr.example.util.HibernateUtil;
 
 import org.slf4j.Logger;
@@ -20,14 +21,12 @@ public class App {
     int sum = rangeOfNumbers.sum();
     log.info("valor suma obtenido {}", sum);
 
-    var session =HibernateUtil.getSessionFactory().openSession();
-    session.beginTransaction();
-    session.save(new Event("first event fith hibernate with annotations"));
-    session.getTransaction().commit();
-    session.close();
+    EventManager manager=  new EventManager(HibernateUtil.getSessionFactory().openSession());
+    Event eventToSave = new Event("first event with hibernate with annotations");
+    manager.save(eventToSave);
 
     // now lets pull events from the database and list them
-		session = HibernateUtil.getSessionFactory().openSession();
+	var	session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
     var event1= session.get(Event.class, 1L)  ;
     // if (event1 ==null) {
